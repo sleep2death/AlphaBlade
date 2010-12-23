@@ -1,31 +1,29 @@
 <?xml version="1.0"?>
-<project name="AlphaBlade" default="compile" basedir=".">
+<project name="AlphaBlade" default="buildAndRun" basedir=".">
     <property name="app.name" value="AlphaBlade"/>
+
     <property name="app.entry" value="src/BladeRunner.as"/>
     <property name="app.bin" value="bin/BladeRunner.swf"/>
 
     <property name="FLEX_HOME" value="/Volumes/DATA/ws/fl/sdk_41/"/>
 
-    <property name="flash.player" location="/Applications/Adobe Flash CS3/Players/Flash Player.app" />
+    <property name="flash.player" location="/Applications/FP/" />
 
     <target name="compile">
         <exec executable="${FLEX_HOME}/bin/mxmlc" failonerror="true">
             <arg line="${app.entry}"/>
             <arg line="-default-size 750 450"/>
+            <arg line="-default-background-color=0x000000"/>
+            <arg line="-default-frame-rate=30"/>
+            <arg line="-optimize=true"/>
             <arg line="-output ${app.bin}"/>
         </exec>
     </target>
 
     <target name="buildAndRun" depends="compile">
         <exec executable="open">
-            <arg line="-a '${flash.player}'"/>
-            <arg line="${APP_ROOT}/${swfOut}" />
-        </exec>
-    </target>
-
-    <target name="clean">
-        <delete dir="${APP_ROOT}/src/generated"/>
-        <delete file="${APP_ROOT}/${swfOut}"/>
+            <arg line="${app.bin}" />
+       </exec>
     </target>
 
 </project>
