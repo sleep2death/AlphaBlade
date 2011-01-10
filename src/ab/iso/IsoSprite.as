@@ -70,7 +70,7 @@ package ab.iso{
     	         
         }
 
-        protected var screen_pos : Pt2D = new Pt2D();
+        public var screen_pos : Pt2D = new Pt2D();
 
         public function validate_pos() : void {
             if(!pos_validated){

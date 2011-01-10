@@ -1,4 +1,4 @@
-package ab.dor.iso {
+package ab.iso {
     import flash.display.BitmapData;
     import flash.display.MovieClip;
     import flash.display.Graphics;

@@ -14,9 +14,12 @@
             <arg line="${app.entry}"/>
             <arg line="-default-size 750 450"/>
             <arg line="-default-background-color=0x000000"/>
-            <arg line="-default-frame-rate=30"/>
+            <arg line="-default-frame-rate=26"/>
             <arg line="-optimize=true"/>
+            <arg line="-debug=true"/>
             <arg line="-output ${app.bin}"/>
+            <arg line="-use-network=true"/>
+            <arg line="-static-link-runtime-shared-libraries=true"/>
         </exec>
     </target>
 

@@ -3,7 +3,11 @@ package ab.iso {
     import flash.display.DisplayObject;
 
     public class IsoLayer extends Sprite {
+
         protected var children : Vector.<IsoSprite> = new Vector.<IsoSprite>();
+
+		protected var num_children : int = 0;
+
         protected var children_not_validated : Vector.<IsoSprite> = new Vector.<IsoSprite>();
 
         public function IsoLayer() : void {
@@ -22,6 +26,9 @@ package ab.iso {
             else
                 throw new Error("Error: IsoSprite Object doesn't exist.");
 
+			num_children = numChildren;
+			trace("NumChildren:" + children.length);
+
             return res;
         }
 
@@ -36,6 +43,8 @@ package ab.iso {
                 children.splice(index, 1);
             else
                 throw new Error("Error: IsoSprite Object doesn't exist.");
+
+			num_children = numChildren;
 
             return res;
         }
@@ -52,14 +61,13 @@ package ab.iso {
             }
         }
 
-        protected var render_list : Vector.<IsoSprite> = new Vector.<IsoSprite>();
-
-        public function add_To_render(target : IsoSprite) : void {
-            if(children.indexOf(target) > 0 && render_list.indexOf(target) < 0) {
-            }
-        }
-
         public function render() : void {
+			//sort();
+		
+			for(var i : int = 0; i < num_children; i++){
+				var child : IsoSprite = children[i];
+				child.render();
+			}
         }
 
         protected var _isLocked : Boolean;
@@ -72,7 +80,12 @@ package ab.iso {
             return _isLocked;    
         }
 
+		public static const SORT_SIMPLE : int = 1;
+		public var sortType : int = SORT_SIMPLE;
+
         protected function sort() : void {
+			//if(sortType == SORT_SIMPLE)
+				//children.sortOn("y", Array.DESCENDING | Array.NUMERIC);
         }
     }
 }

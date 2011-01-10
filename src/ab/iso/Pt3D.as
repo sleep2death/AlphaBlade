@@ -1,4 +1,4 @@
-package com.dor.iso {
+package ab.iso {
     public class Pt3D {
         public static const Y_CORRECT : Number = Math.cos(-Math.PI / 6) * Math.SQRT2;
 
